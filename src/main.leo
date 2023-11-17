@@ -11,7 +11,7 @@ program mediscan.aleo {
     }
 
     transition verify_health_worker(private worker: address) {
-        only_owner(self.caller);
+        // only_owner(self.caller);
         return then finalize(worker);
     }
 
@@ -23,7 +23,7 @@ program mediscan.aleo {
         return then finalize(hash, self.caller);
     }
 
-    finalize verify_new_face_hash (public hash: field, caller: address) {
+    finalize verify_new_face_hash(public hash: field, caller: address) {
         let is_verified: bool = Mapping::get(verified_health_workers, caller);
         assert(is_verified);
         Mapping::set(verified_face_hashes, hash, true);
