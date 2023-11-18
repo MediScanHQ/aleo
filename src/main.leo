@@ -11,7 +11,7 @@ program mediscan.aleo {
     }
 
     transition verify_health_worker(private worker: address) {
-        // only_owner(self.caller);
+        only_owner(self.caller);
         return then finalize(worker);
     }
 
